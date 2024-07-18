@@ -1,0 +1,30 @@
+{
+  "Culture": "en",
+  "Texts": {
+    "Menu:Home": "Home",
+    "Welcome": "Welcome",
+    "LongWelcomeMessage": "Welcome to the FAMS. This is a File Archive Management System designed and developped in Access Bank DRC.",
+    "Menu:Archive": "Archive",
+    "Menu:Customers": "Customers",
+    "Actions": "Actions",
+    "Close": "Cancel",
+    "Delete": "Delete",
+    "Edit": "Edit",
+    "OnBoardDate": "Open Date",
+    "NewCustomer": "New Customer",
+    "AccountName": "Acc Name",
+    "AccountNumber": "Acc Number",
+    "BranchName": "Br Name",
+    "BranchCode": "Br Code",
+    "Category": "Category",
+    "Type": "Type",
+    "AccountStatus": "Status",
+    "AreYouSure": "Are you sure?",
+    "AreYouSureToDelete": "Are you sure you want to delete this item?",
+    "Enum:AccountType.0": "Current",
+    "Enum:AccountType.1": "Salary",
+    "Enum:AccountType.2": "Saving",
+    "Enum:AccountCategory.0": "Personal",
+    "Enum:AccountCategory.1": "Corporate"
+  }
+ }
