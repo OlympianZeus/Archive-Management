@@ -6,7 +6,7 @@
             </div>
             <div class="text-end col col-md-6">
                 <div class="text-lg-end pt-2">
-                    <button id="create" class="btn btn-primary" type="button" (click)="createBook()">
+                    <button id="create" class="btn btn-primary" type="button" (click)="createCustomer()">
                         <i class="fa fa-plus me-1"></i>
                         <span>{{"::NewCustomer" | abpLocalization}}</span>
                     </button>
@@ -16,6 +16,30 @@
     </div>
     <div class="card-body">
         <ngx-datatable [rows]="customer.items" [count]="customer.totalCount" [list]="list" default>
+            <ngx-datatable-column
+                [name]="'::Actions' | abpLocalization"
+                [maxWidth]="150"
+                [sortable]="false">
+                <ng-template let-row = "row" ngx-datatable-cell-template>
+                    <div ngbDropdown container="body" class="d-inline-block">
+                        <button
+                        class="btn btn-primary btn-sm dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        ngbDropdownToggle>
+                    <i class="fa fa-cog me-1"></i>{{'::Actions' | abpLocalization}}
+                    </button>
+                    <div ngbDropdownMenu>
+                        <button ngbDropdownItem (click)="editCustomer(row.id)">
+                            {{'::Edit' | abpLocalization}}
+                        </button>
+                        <button ngbDropdownItem (click)="delete(row.id)">
+                            {{'::Delete' | abpLocalization}}
+                        </button>
+                    </div>
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
             <ngx-datatable-column [name]="'::AccountName'|abpLocalization" prop="accountName"></ngx-datatable-column>
             <ngx-datatable-column [name]="'::AccountNumber'|abpLocalization" prop="accountNumber"></ngx-datatable-column>
             <ngx-datatable-column [name]="'::BranchName'|abpLocalization" prop="branchName"></ngx-datatable-column>
@@ -46,14 +70,72 @@
 
 <abp-modal [(visible)]="isModalOpen">
     <ng-template #abpHeader>
-        <h3>{{ '::NewCustomer'|abpLocalization}}</h3>
+        <h3>{{ (selectedCustomer.id ? '::Edit':'::NewCustomer') | abpLocalization}}</h3>
     </ng-template>
-    <ng-template #abpbody></ng-template>
+
+    <ng-template #abpBody>
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="mt-2">
+                <label for="accountName">Account Name</label><span> * </span>
+                <input type="text" id="accountName" class="form-control" formControlName="accountName" autofocus />
+            </div>
+
+            <div class="mt-2">
+                <label for="account_number">Account Number</label><span> * </span>
+                <input type="text" class="form-control" id="account_number" formControlName="accountNumber">
+            </div>
+
+            <div class="mt-2">
+                <label for="branch_name">Branch Name</label><span> * </span>
+                <input type="text" class="form-control" id="branch_name" formControlName="branchName">
+            </div>
+
+            <div class="mt-2">
+                <label for="branch_code">Branch Code</label><span> * </span>
+                <input type="text" class="form-control" id="branch_code" formControlName="branchCode">
+            </div>
+
+            <div class="mt-2">
+                <label for="account_type">Type</label><span> * </span>
+                <select class="form-control" id="account_type" formControlName="type">
+                    <option [ngValue]="null"> --Account Type-- </option>
+                    <option [ngValue]="type.value" *ngFor="let type of accountTypes">{{ '::Enum:AccountType.' + type.value |abpLocalization}}</option>
+                </select>
+            </div>
+
+            <div class="mt-2">
+                <label for="account_category">Category</label><span> * </span>
+                <select id="account_category" class="form-control" formControlName="category">
+                    <option [ngValue]="null">-- Account Category --</option>
+                    <option [ngValue]="category.value" *ngFor="let category of accountCategories">{{'::Enum:AccountCategory.' + category.value | abpLocalization}}</option>
+                </select>
+            </div>
+
+            <div class="mt-2">
+                <label>OnBoard Date</label><span> * </span>
+                <input 
+                    #datepiccker="ngbDatepicker"
+                    class="form-control"
+                    name="datepicker"
+                    formControlName="onBoardDate"
+                    ngbDatepicker
+                    (click)="datepiccker.toggle()">
+            </div>
+
+            <div class="mt-2">
+                <label for="account_status">Account Status</label><span> * </span>
+                <input type="text" class="form-control" id="account_status" formControlName="accountStatus">
+            </div>
+        </form>
+    </ng-template>
+    
     <ng-template #abpFooter>
         <button type="button" class="btn btn-secondary" abpClose>
-            {{'::Close' | abpLocalization}}
+            {{'::close' | abpLocalization}}
+        </button>
+        <button type="button" class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+            <i class="fa fa-check mr-1"></i>
+            {{'::Save' | abpLocalization}}
         </button>
     </ng-template>
-    
-    
 </abp-modal>

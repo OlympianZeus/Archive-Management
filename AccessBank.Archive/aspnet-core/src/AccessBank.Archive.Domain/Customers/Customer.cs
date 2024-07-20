@@ -11,7 +11,7 @@ namespace AccessBank.Archive.Customers
         public int BranchCode { get; set; }
         public AccountType Type { get; set; }
         public AccountCategory Category { get; set; }
-        public DateOnly OnBoardDate { get; set; }
+        public DateTime OnBoardDate { get; set; }
         public string AccountStatus { get; set; }
     }
 }

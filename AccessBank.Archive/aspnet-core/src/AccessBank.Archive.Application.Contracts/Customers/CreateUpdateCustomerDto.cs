@@ -26,7 +26,7 @@ namespace AccessBank.Archive.Customers
         public AccountCategory Category { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        public DateOnly OnBoardDate { get; set; }
+        public DateTime OnBoardDate { get; set; }
         [Required]
         public string AccountStatus { get; set; }
     }

@@ -31,7 +31,7 @@ namespace AccessBank.Archive
                         BranchCode = 200,
                         Category = AccountCategory.Personal,
                         Type = AccountType.Saving,
-                        OnBoardDate = new DateOnly(2023, 3, 26),
+                        OnBoardDate = new DateTime(2023, 3, 26),
                         AccountStatus = "Active"
                     },
                     autoSave: true
@@ -46,7 +46,7 @@ namespace AccessBank.Archive
                         BranchCode = 200,
                         Category = AccountCategory.Personal,
                         Type = AccountType.Saving,
-                        OnBoardDate = new DateOnly(2023, 3, 26),
+                        OnBoardDate = new DateTime(2023, 3, 26),
                         AccountStatus = "Active"
                     },
                     autoSave: true

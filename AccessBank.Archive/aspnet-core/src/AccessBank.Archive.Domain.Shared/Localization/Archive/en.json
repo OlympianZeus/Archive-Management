@@ -25,6 +25,12 @@
     "Enum:AccountType.1": "Salary",
     "Enum:AccountType.2": "Saving",
     "Enum:AccountCategory.0": "Personal",
-    "Enum:AccountCategory.1": "Corporate"
+    "Enum:AccountCategory.1": "Corporate",
+    "Permission:Archive": "Archive",
+    "Permission:Customers": "Customer Files Archive Management",
+    "Permission:Customers.Create": "Creating new files archive",
+    "Permission:Customers.Edit": " Editing the file",
+    "Permission:Customers.Delete": "Deleting the file"
+
   }
  }
