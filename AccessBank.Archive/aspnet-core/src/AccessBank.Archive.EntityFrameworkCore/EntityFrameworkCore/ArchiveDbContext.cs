@@ -1,4 +1,5 @@
 ﻿using AccessBank.Archive.Customers;
+using AccessBank.Archive.Correspondances;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -27,6 +28,7 @@ public class ArchiveDbContext :
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<Customer> Customers { get; set; }
+    public DbSet<Correspondance> Correspondances { get; set; }
     #region Entities from the modules
 
     /* Notice: We only implemented IIdentityDbContext and ITenantManagementDbContext
@@ -91,6 +93,14 @@ public class ArchiveDbContext :
                 ArchiveConsts.DbSchema);
             c.ConfigureByConvention();
             c.Property(x => x.AccountName).IsRequired().HasMaxLength(128);
+        });
+
+        builder.Entity<Correspondance>(correspondance =>
+        {
+            correspondance.ToTable(ArchiveConsts.DbTablePrefix + "Correspondances",
+                ArchiveConsts.DbSchema);
+            correspondance.ConfigureByConvention();
+            correspondance.Property(x => x.Sender).IsRequired().HasMaxLength(128);
         });
     }
 }

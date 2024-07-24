@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Employees\" />
-    <Folder Include="Correspondances\" />
   </ItemGroup>
 
 </Project>

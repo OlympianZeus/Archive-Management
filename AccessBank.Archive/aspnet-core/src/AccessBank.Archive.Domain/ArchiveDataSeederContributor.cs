@@ -1,4 +1,5 @@
-﻿using AccessBank.Archive.Customers;
+﻿using AccessBank.Archive.Correspondances;
+using AccessBank.Archive.Customers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,12 @@ namespace AccessBank.Archive
         : IDataSeedContributor, ITransientDependency
     {
         private readonly IRepository<Customer, Guid> _customerRepository;
+        public readonly IRepository<Correspondance, Guid> _correspondanceRespository;
         public ArchiveDataSeederContributor(IRepository<Customer, Guid> customerRepository)
         {
             _customerRepository = customerRepository;
         }
+        
         public async Task SeedAsync(DataSeedContext context)
         {
             if( await _customerRepository.GetCountAsync() <= 0)
@@ -52,6 +55,7 @@ namespace AccessBank.Archive
                     autoSave: true
                 );
             }
+            
         }
     }
 }

@@ -1,0 +1,133 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col col-md-6">
+                <h5 class="card-title">{{'::Menu:Correspondance'| abpLocalization}}</h5>
+            </div>
+            <div class="text-end col col-md-6">
+                <div class="text-lg-end pt-2">
+                    <button id="create" class="btn btn-primary" type="button" (click)="createCorrespondance()">
+                        <i class="fa fa-plus me-1"></i>
+                        <span>{{"::NewCorrespondanace" | abpLocalization}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <ngx-datatable [rows]="correspondance.items" [count]="correspondance.totalCount" [list]="list" default>
+            <ngx-datatable-column
+                [name]="'::Actions' | abpLocalization"
+                [maxWidth]="150"
+                [sortable]="false">
+                <ng-template let-row = "row" ngx-datatable-cell-template>
+                    <div ngbDropdown container="body" class="d-inline-block">
+                        <button
+                        class="btn btn-primary btn-sm dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        ngbDropdownToggle>
+                    <i class="fa fa-cog me-1"></i>{{'::Actions' | abpLocalization}}
+                    </button>
+                    <div ngbDropdownMenu>
+                        <button ngbDropdownItem (click)="editCorrespondance(row.id)">
+                            {{'::Edit' | abpLocalization}}
+                        </button>
+                        <button ngbDropdownItem (click)="delete(row.id)">
+                            {{'::Delete' | abpLocalization}}
+                        </button>
+                    </div>
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [name]="'::Sender'|abpLocalization" prop="sender"></ngx-datatable-column>
+            <ngx-datatable-column [name]="'::BranchName'|abpLocalization" prop="branchName"></ngx-datatable-column>
+            <ngx-datatable-column [name]="'::Reference'|abpLocalization" prop="reference"></ngx-datatable-column>
+            <!-- <ngx-datatable-column [name]="'::BranchCode'|abpLocalization" prop="branchCode"></ngx-datatable-column> -->
+            
+            <ngx-datatable-column [name]="'::Cco'|abpLocalization" prop="cco">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{'::Enum:Receptionist.' + row.cco | abpLocalization}}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [name]="'::Destinator'|abpLocalization" prop="destinator">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{'::Enum:Receiver.' + row.destinator | abpLocalization}}
+                </ng-template>
+            </ngx-datatable-column>
+        
+            <!-- <ngx-datatable-column [name]="'::OnBoardDate'|abpLocalization" prop="onBoardDate">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row.onBoardDate | date}}
+                </ng-template>
+                
+            </ngx-datatable-column> -->
+            <ngx-datatable-column [name]="'::Approver'|abpLocalization" prop="approver">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{'::Enum:Approver.' + row.correspondanceApprover | abpLocalization}}
+                </ng-template>
+            </ngx-datatable-column>
+
+        </ngx-datatable>
+    </div>
+</div>
+
+<abp-modal [(visible)]="isModalOpen">
+    <ng-template #abpHeader>
+        <h3>{{ (selectedCorrespondance.id ? '::Edit':'::NewCorrespondanace') | abpLocalization}}</h3>
+        <!-- <h5 class="card-title">{{ '::NewCorrespondance' | abpLocalization }}</h5> -->
+    </ng-template>
+
+    <ng-template #abpBody>
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="mt-2">
+                <label for="senderName">Sender Name</label><span> * </span>
+                <input type="text" id="senderName" class="form-control" formControlName="sender" autofocus />
+            </div>
+
+            <div class="mt-2">
+                <label for="receptionist">Receptionist</label><span> * </span>
+                <select class="form-control" id="receptionist" formControlName="receptionist">
+                    <option [ngValue]="null"> --Receptionist-- </option>
+                    <option [ngValue]="cco.value" *ngFor="let cco of receptionist">{{ '::Enum:Receptionist.' + cco.value |abpLocalization}}</option>
+                </select>
+            </div>
+
+            <div class="mt-2">
+                <label for="destinator">Destinator</label><span> * </span>
+                <select class="form-control" id="destinator" formControlName="receiver">
+                    <option [ngValue]="null"> --Destinator-- </option>
+                    <option [ngValue]="destinator.value" *ngFor="let destinator of receiver">{{ '::Enum:Receiver.' + destinator.value |abpLocalization}}</option>
+                </select>
+            </div>
+
+            <div class="mt-2">
+                <label for="branch_name">Branch Name</label><span> * </span>
+                <input type="text" class="form-control" id="branch_name" formControlName="branchName">
+            </div>
+
+            <div class="mt-2">
+                <label for="branch_name">Reference</label><span> * </span>
+                <input type="text" class="form-control" id="branch_name" formControlName="reference">
+            </div>
+
+            <div class="mt-2">
+                <label for="authorizer">Authorizer</label><span> * </span>
+                <select id="authorizer" class="form-control" formControlName="approver">
+                    <option [ngValue]="null">-- Authorizer --</option>
+                    <option [ngValue]="correspondanceApprover.value" *ngFor="let correspondanceApprover of approver">{{'::Enum:Approver.' + correspondanceApprover.value | abpLocalization}}</option>
+                </select>
+            </div>
+        </form>
+    </ng-template>
+    
+    <ng-template #abpFooter>
+        <button type="button" class="btn btn-secondary" abpClose>
+            {{'::close' | abpLocalization}}
+        </button>
+        <button type="button" class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+            <i class="fa fa-check mr-1"></i>
+            {{'::Save' | abpLocalization}}
+        </button>
+    </ng-template>
+</abp-modal>

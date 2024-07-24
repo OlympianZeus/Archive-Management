@@ -28,6 +28,12 @@ function configureRoutes(routesService: RoutesService) {
         parentName: '::Menu:Archive',
         layout: eLayoutType.application
       },
+      {
+        path:'/correspondances',
+        name:'::Menu:Correspondance',
+        parentName: '::Menu:Archive',
+        layout:eLayoutType.application
+      }
 
     ]);
   };

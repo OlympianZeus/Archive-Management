@@ -873,6 +873,346 @@
       "rootPath": "app",
       "remoteServiceName": "Default",
       "controllers": {
+        "AccessBank.Archive.Correspondances.CorrespondanceAppService": {
+          "controllerName": "Correspondance",
+          "controllerGroupName": "Correspondance",
+          "isRemoteService": true,
+          "isIntegrationService": false,
+          "apiVersion": null,
+          "type": "AccessBank.Archive.Correspondances.CorrespondanceAppService",
+          "interfaces": [
+            {
+              "type": "AccessBank.Archive.ICorrespondanceAppService",
+              "name": "ICorrespondanceAppService",
+              "methods": [
+                {
+                  "name": "GetAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "AccessBank.Archive.Correspondances.CorrespondanceDto",
+                    "typeSimple": "AccessBank.Archive.Correspondances.CorrespondanceDto"
+                  }
+                },
+                {
+                  "name": "GetListAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "input",
+                      "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
+                      "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<AccessBank.Archive.Correspondances.CorrespondanceDto>",
+                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<AccessBank.Archive.Correspondances.CorrespondanceDto>"
+                  }
+                },
+                {
+                  "name": "CreateAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "input",
+                      "typeAsString": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto, AccessBank.Archive.Application.Contracts",
+                      "type": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                      "typeSimple": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "AccessBank.Archive.Correspondances.CorrespondanceDto",
+                    "typeSimple": "AccessBank.Archive.Correspondances.CorrespondanceDto"
+                  }
+                },
+                {
+                  "name": "UpdateAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    },
+                    {
+                      "name": "input",
+                      "typeAsString": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto, AccessBank.Archive.Application.Contracts",
+                      "type": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                      "typeSimple": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "AccessBank.Archive.Correspondances.CorrespondanceDto",
+                    "typeSimple": "AccessBank.Archive.Correspondances.CorrespondanceDto"
+                  }
+                },
+                {
+                  "name": "DeleteAsync",
+                  "parametersOnMethod": [
+                    {
+                      "name": "id",
+                      "typeAsString": "System.Guid, System.Private.CoreLib",
+                      "type": "System.Guid",
+                      "typeSimple": "string",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Void",
+                    "typeSimple": "System.Void"
+                  }
+                }
+              ]
+            }
+          ],
+          "actions": {
+            "CreateAsyncByInput": {
+              "uniqueName": "CreateAsyncByInput",
+              "name": "CreateAsync",
+              "httpMethod": "POST",
+              "url": "api/app/correspondance",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto, AccessBank.Archive.Application.Contracts",
+                  "type": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                  "typeSimple": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                  "typeSimple": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "AccessBank.Archive.Correspondances.CorrespondanceDto",
+                "typeSimple": "AccessBank.Archive.Correspondances.CorrespondanceDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<AccessBank.Archive.Correspondances.CorrespondanceDto,AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto>"
+            },
+            "UpdateAsyncByIdAndInput": {
+              "uniqueName": "UpdateAsyncByIdAndInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/app/correspondance/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto, AccessBank.Archive.Application.Contracts",
+                  "type": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                  "typeSimple": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                  "typeSimple": "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "AccessBank.Archive.Correspondances.CorrespondanceDto",
+                "typeSimple": "AccessBank.Archive.Correspondances.CorrespondanceDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<AccessBank.Archive.Correspondances.CorrespondanceDto,System.Guid,AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto>"
+            },
+            "DeleteAsyncById": {
+              "uniqueName": "DeleteAsyncById",
+              "name": "DeleteAsync",
+              "httpMethod": "DELETE",
+              "url": "api/app/correspondance/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IDeleteAppService<System.Guid>"
+            },
+            "GetAsyncById": {
+              "uniqueName": "GetAsyncById",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/app/correspondance/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "AccessBank.Archive.Correspondances.CorrespondanceDto",
+                "typeSimple": "AccessBank.Archive.Correspondances.CorrespondanceDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<AccessBank.Archive.Correspondances.CorrespondanceDto,AccessBank.Archive.Correspondances.CorrespondanceDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
+            },
+            "GetListAsyncByInput": {
+              "uniqueName": "GetListAsyncByInput",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/correspondance",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
+                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<AccessBank.Archive.Correspondances.CorrespondanceDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<AccessBank.Archive.Correspondances.CorrespondanceDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<AccessBank.Archive.Correspondances.CorrespondanceDto,AccessBank.Archive.Correspondances.CorrespondanceDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
+            }
+          }
+        },
         "AccessBank.Archive.Customers.CustomerAppService": {
           "controllerName": "Customer",
           "controllerGroupName": "Customer",
@@ -3822,6 +4162,268 @@
     }
   },
   "types": {
+    "AccessBank.Archive.Correspondances.Approver": {
+      "baseType": "System.Enum",
+      "isEnum": true,
+      "enumNames": [
+        "Wilfried",
+        "Eric",
+        "Nicole",
+        "Benie",
+        "Undefined"
+      ],
+      "enumValues": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "genericArguments": null,
+      "properties": null
+    },
+    "AccessBank.Archive.Correspondances.CorrespondanceDto": {
+      "baseType": "Volo.Abp.Application.Dtos.AuditedEntityDto<System.Guid>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Sender",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Cco",
+          "jsonName": null,
+          "type": "AccessBank.Archive.Correspondances.Receptionist",
+          "typeSimple": "AccessBank.Archive.Correspondances.Receptionist",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "destinator",
+          "jsonName": null,
+          "type": "AccessBank.Archive.Correspondances.Receiver",
+          "typeSimple": "AccessBank.Archive.Correspondances.Receiver",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "BranchName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Reference",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CorrespondanceApprover",
+          "jsonName": null,
+          "type": "AccessBank.Archive.Correspondances.Approver",
+          "typeSimple": "AccessBank.Archive.Correspondances.Approver",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CorrespondanceStatus",
+          "jsonName": null,
+          "type": "AccessBank.Archive.Correspondances.Status",
+          "typeSimple": "AccessBank.Archive.Correspondances.Status",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "AccessBank.Archive.Correspondances.CreateUpadteCorrespondanceDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Sender",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": 0,
+          "maxLength": 128,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Cco",
+          "jsonName": null,
+          "type": "AccessBank.Archive.Correspondances.Receptionist",
+          "typeSimple": "AccessBank.Archive.Correspondances.Receptionist",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "destinator",
+          "jsonName": null,
+          "type": "AccessBank.Archive.Correspondances.Receiver",
+          "typeSimple": "AccessBank.Archive.Correspondances.Receiver",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "BranchName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Reference",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CorrespondanceApprover",
+          "jsonName": null,
+          "type": "AccessBank.Archive.Correspondances.Approver",
+          "typeSimple": "AccessBank.Archive.Correspondances.Approver",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CorrespondanceStatus",
+          "jsonName": null,
+          "type": "AccessBank.Archive.Correspondances.Status",
+          "typeSimple": "AccessBank.Archive.Correspondances.Status",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "AccessBank.Archive.Correspondances.Receiver": {
+      "baseType": "System.Enum",
+      "isEnum": true,
+      "enumNames": [
+        "Patrick",
+        "Grace",
+        "Peter",
+        "Benjamin",
+        "Undefined"
+      ],
+      "enumValues": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "genericArguments": null,
+      "properties": null
+    },
+    "AccessBank.Archive.Correspondances.Receptionist": {
+      "baseType": "System.Enum",
+      "isEnum": true,
+      "enumNames": [
+        "Joel",
+        "Martine",
+        "Marc",
+        "Undefined"
+      ],
+      "enumValues": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "genericArguments": null,
+      "properties": null
+    },
+    "AccessBank.Archive.Correspondances.Status": {
+      "baseType": "System.Enum",
+      "isEnum": true,
+      "enumNames": [
+        "Pending",
+        "Approved",
+        "Declined",
+        "Undefined"
+      ],
+      "enumValues": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "genericArguments": null,
+      "properties": null
+    },
     "AccessBank.Archive.Customers.AccountCategory": {
       "baseType": "System.Enum",
       "isEnum": true,
@@ -3934,7 +4536,7 @@
         {
           "name": "OnBoardDate",
           "jsonName": null,
-          "type": "System.DateOnly",
+          "type": "System.DateTime",
           "typeSimple": "string",
           "isRequired": true,
           "minLength": null,
@@ -4039,7 +4641,7 @@
         {
           "name": "OnBoardDate",
           "jsonName": null,
-          "type": "System.DateOnly",
+          "type": "System.DateTime",
           "typeSimple": "string",
           "isRequired": false,
           "minLength": null,

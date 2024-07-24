@@ -27,6 +27,7 @@ const routes: Routes = [
   },
 
   { path: 'customers', loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule) },
+  { path: 'correspondances', loadChildren: () => import('./correspondance/correspondance.module').then(m => m.CorrespondanceModule) },
 ];
 
 @NgModule({
